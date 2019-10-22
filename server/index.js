@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
 
-const port = 3000;
+//settings
+app.set('port', process.env.PORT || 3000);
 
-app.listen(port, () => {
-    console.log('Server on port', port);
+//middlewares
+
+//routes
+
+//start server
+app.listen(app.get('port'), () => {
+    console.log('Server on port', app.get('port'));
 });
