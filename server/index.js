@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const { Mongoose } = require('./database');
 
 const app = express();
 
