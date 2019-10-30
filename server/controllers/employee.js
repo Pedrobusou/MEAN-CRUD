@@ -20,12 +20,17 @@ controller.read = async (req, res) => {
 };
 
 controller.update = async (req, res) => {
-    await Model.findOneAndUpdate(req.params.id, { $set: req.body });
+    await Model.findByIdAndUpdate(req.params.id, { $set: req.body });
     res.json({
         status: 'Update success'
     });
 };
 
-controller.delete = () => { };
+controller.delete = async (req, res) => {
+    await Model.findByIdAndRemove(req.params.id, { $set: req.body });
+    res.json({
+        status: 'Delete success'
+    });
+};
 
 module.exports = controller;
