@@ -1,20 +1,23 @@
-const Employee = require('../models/employee');
+const Model = require('../models/employee');
 const controller = {};
 
 controller.list = async (req, res) => {
-    const employees = await Employee.find();
-    res.json(employees);
+    const list = await Model.find();
+    res.json(list);
 };
 
 controller.create = async (req, res) => {
-    const employee = new Employee(req.body);
-    await employee.save();
+    await new Model(req.body).save();
+
     res.json({
-        status: 'Employee saved'
+        status: 'Creation success'
     });
 };
 
-controller.read = (req, res) => { };
+controller.read = async (req, res) => {
+    const item = await Model.findById(req.params.id);
+    res.json(item);
+};
 
 controller.update = () => { };
 
