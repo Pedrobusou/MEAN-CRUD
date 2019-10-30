@@ -19,7 +19,12 @@ controller.read = async (req, res) => {
     res.json(item);
 };
 
-controller.update = () => { };
+controller.update = async (req, res) => {
+    await Model.findOneAndUpdate(req.params.id, { $set: req.body });
+    res.json({
+        status: 'Update success'
+    });
+};
 
 controller.delete = () => { };
 
