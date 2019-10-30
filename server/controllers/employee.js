@@ -1,8 +1,9 @@
 const model = require('../models/employee');
 const controller = {};
 
-controller.list = (req, res) => {
-    model.find();
+controller.list = async (req, res) => {
+    const employees = await model.find();
+    res.json(employees);
 };
 
 controller.create = () => { };
