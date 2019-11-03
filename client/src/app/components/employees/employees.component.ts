@@ -26,6 +26,7 @@ export class EmployeesComponent implements OnInit {
         console.log(res);
         this.resetForm(form);
         M.toast({ html: 'Employee created!' });
+        this.readAll();
       });
   }
 
