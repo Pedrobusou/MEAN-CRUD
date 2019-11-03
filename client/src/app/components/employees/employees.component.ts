@@ -39,6 +39,16 @@ export class EmployeesComponent implements OnInit {
       .subscribe(res => { this.employeeService.items = res as Employee[] });
   }
 
+  delete(_id: string) {
+    if (confirm('Are you sure?')) {
+      this.employeeService.delete(_id)
+        .subscribe(res => {
+          M.toast({ html: 'Employee Deleted!' });
+          this.readAll();
+        });
+    }
+  }
+
   resetForm(form: NgForm) {
     form.reset();
     this.employeeService.selectedEmployee = new Employee();
