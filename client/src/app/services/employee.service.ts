@@ -14,6 +14,10 @@ export class EmployeeService {
     this.selectedEmployee = new Employee();
   }
 
+  /**
+   * Create employee using API
+   * @param item {Employee}
+   */
   create(item: Employee) {
     this.http.post(this.API_URL, item);
   }
