@@ -19,7 +19,7 @@ export class EmployeeService {
    * @param item {Employee}
    */
   create(item: Employee) {
-    this.http.post(this.API_URL, item);
+    return this.http.post(this.API_URL, item);
   }
 
   read() {
@@ -27,7 +27,7 @@ export class EmployeeService {
   }
 
   update(item: Employee) {
-    this.http.put(`${this.API_URL}/${item._id}`, item);
+    return this.http.put(`${this.API_URL}/${item._id}`, item);
   }
 
   delete(_id: string) {
