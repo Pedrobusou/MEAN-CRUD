@@ -4,7 +4,27 @@
       <div class="card">
         <div class="card-content">
           <form #employeeForm="ngForm" (ngSubmit)="createEmployee(employeeForm)">
+            <div class="row">
+              <div class="input-field col s12">
+                <input name="name" placeholder="Employee name" #name="ngModel"
+                  [(ngModel)]="employeeService.selectedEmployee.name">
+              </div>
 
+              <div class="input-field col s12">
+                <input name="position" placeholder="Employee position" #position="ngModel"
+                  [(ngModel)]="employeeService.selectedEmployee.position">
+              </div>
+
+              <div class="input-field col s12">
+                <input name="office" placeholder="Employee office" #office="ngModel"
+                  [(ngModel)]="employeeService.selectedEmployee.office">
+              </div>
+
+              <div class="input-field col s12">
+                <input type="number" name="salary" placeholder="Employee salary" #salary="ngModel"
+                  [(ngModel)]="employeeService.selectedEmployee.salary">
+              </div>
+            </div>
           </form>
         </div>
       </div>
