@@ -19,27 +19,32 @@ export class EmployeesComponent implements OnInit {
     this.readAll();
   }
 
-  create(form: NgForm) {
-    console.log(form.value);
-    this.employeeService.create(form.value)
-      .subscribe(res => {
-        console.log(res);
-        this.resetForm(form);
-        M.toast({ html: 'Employee created!' });
-        this.readAll();
-      });
+  save(form: NgForm) {
+    if (form.value._id)
+      this.employeeService.update(form.value)
+        .subscribe(() => this.saveSuccess(form));
+    else
+      this.employeeService.create(form.value)
+        .subscribe(() => this.saveSuccess(form));
+  }
+
+  saveSuccess(form: NgForm) {
+    this.resetForm(form);
+    M.toast({ html: 'Employee saved!' });
+    this.readAll();
   }
 
   readAll() {
     this.employeeService.readAll()
-      .subscribe(res => {
-        console.log(res);
-        this.employeeService.items = res as Employee[];
-      });
+      .subscribe(res => { this.employeeService.items = res as Employee[] });
   }
 
   resetForm(form: NgForm) {
     form.reset();
     this.employeeService.selectedEmployee = new Employee();
+  }
+
+  fillForm(item: Employee) {
+    this.employeeService.selectedEmployee = item;
   }
 }
