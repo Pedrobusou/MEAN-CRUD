@@ -3,7 +3,9 @@
     <div class="col s5">
       <div class="card">
         <div class="card-content">
-          <form #form="ngForm" (ngSubmit)="create(form)">
+          <form #form="ngForm" (ngSubmit)="save(form)">
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
+
             <div class="row">
               <div class="input-field col s12">
                 <input name="name" placeholder="Employee name" #name="ngModel"
@@ -46,7 +48,7 @@
           <th>Position</th>
           <th>Office</th>
           <th>Salary</th>
-          <th></th>
+          <th>Actions</th>
         </thead>
 
         <tbody>
@@ -56,7 +58,11 @@
             <td>{{item.position}}</td>
             <td>{{item.office}}</td>
             <td>{{item.salary}}</td>
-            <td></td>
+            <td>
+              <a (click)="fillForm(item)" class="">
+                <i class="material-icons">edit</i>
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
