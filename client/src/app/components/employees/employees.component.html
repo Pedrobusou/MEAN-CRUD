@@ -3,7 +3,7 @@
     <div class="col s5">
       <div class="card">
         <div class="card-content">
-          <form #employeeForm="ngForm" (ngSubmit)="createEmployee(employeeForm)">
+          <form #form="ngForm" (ngSubmit)="create(form)">
             <div class="row">
               <div class="input-field col s12">
                 <input name="name" placeholder="Employee name" #name="ngModel"
@@ -23,6 +23,14 @@
               <div class="input-field col s12">
                 <input type="number" name="salary" placeholder="Employee salary" #salary="ngModel"
                   [(ngModel)]="employeeService.selectedEmployee.salary">
+              </div>
+
+              <div class="card-action">
+                <div class="input-field col s12">
+                  <button type="button" class="btn" (click)="resetForm(form)">Reset</button>
+
+                  <button class="btn right">Save</button>
+                </div>
               </div>
             </div>
           </form>
