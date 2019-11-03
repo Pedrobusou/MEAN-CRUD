@@ -16,7 +16,7 @@ export class EmployeesComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-
+    this.readAll();
   }
 
   create(form: NgForm) {
@@ -26,6 +26,14 @@ export class EmployeesComponent implements OnInit {
         console.log(res);
         this.resetForm(form);
         M.toast({ html: 'Employee created!' });
+      });
+  }
+
+  readAll() {
+    this.employeeService.readAll()
+      .subscribe(res => {
+        console.log(res);
+        this.employeeService.items = res as Employee[];
       });
   }
 

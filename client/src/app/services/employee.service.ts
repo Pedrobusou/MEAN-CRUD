@@ -22,7 +22,7 @@ export class EmployeeService {
     return this.http.post(this.API_URL, item);
   }
 
-  read() {
+  readAll() {
     return this.http.get(this.API_URL);
   }
 
