@@ -2,7 +2,14 @@ const Model = require('../models/employee');
 const controller = {};
 
 controller.create = async (req, res) => {
-    await new Model(req.body).save();
+    const item = new Model({
+        name: req.body.name,
+        position: req.body.position,
+        office: req.body.office,
+        salary: req.body.salary
+    });
+
+    await item.save();
 
     res.json({
         status: 'Creation success'
